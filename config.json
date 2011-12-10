@@ -1,0 +1,11 @@
+{
+	"project" : {
+		"name" 	: "My Test Project",
+		"author": "Chris Cornutt",
+		"tasks" : [
+			{
+				"type" : "sample"
+			}
+		]
+	}
+}
