@@ -2,12 +2,23 @@
 
 namespace Lib;
 
+/**
+ * Main application execution class
+ *
+ * @package Usher
+ */
 class Application
 {
 	private $currentTasks = array();
 
 	private $failureMessages = array();
 
+	/**
+	 * Execute the build
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
 	public function execute()
 	{
 		foreach($this->getTasks() as $task){
@@ -23,6 +34,12 @@ class Application
 		}
 	}
 
+	/**
+	 * Get the list of current tasks and transform them into 
+	 * the corresponding classes
+	 *
+	 * @return array $taskObjects Objects made from task data
+	 */
 	public function getTasks()
 	{
 		// pull them from the config file and make them classes
