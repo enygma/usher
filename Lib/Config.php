@@ -2,11 +2,30 @@
 
 namespace Lib;
 
+/**
+ * Works with the JSON-based configuration file
+ *
+ * @package Usher
+ */
 class Config
 {
+	/**
+	 * Filename for the default config file
+	 * @var string
+	 */
 	private static $configFile 		= 'config.json';
+
+	/**
+	 * Current configuration options
+	 * @var array
+	 */
 	private static $currentConfig 	= null;
 
+	/**
+	 * Load the configuration from the given file
+	 *
+	 * @return void
+	 */
 	public static function load()
 	{
 		// look for a configuration file
@@ -18,6 +37,12 @@ class Config
 		}
 	}
 
+	/**
+	 * Get an option from the configuration file
+	 *
+	 * @param string $optionPath Option path to find
+	 * @param mixed Found result or null
+	 */
 	public function getOption($optionPath)
 	{
 		$ex = new Utility\ExpandObject();
