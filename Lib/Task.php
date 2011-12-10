@@ -2,7 +2,7 @@
 
 namespace Lib;
 
-class Task
+abstract class Task
 {
 	public $passStatus = true;
 
@@ -12,6 +12,7 @@ class Task
 	{
 		$this->configuration = $configData;
 	}
+	public function execute(){ }
 }
 
 ?>

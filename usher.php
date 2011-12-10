@@ -8,10 +8,11 @@ Lib\Config::load();
 Lib\Console\Output::msg('Executing project "'.Lib\Config::getOption('project.name').'"');
 
 // get and execute our tasks
-$app = new Lib\Application();
-
-$tasks = $app->getTasks();
-var_dump($tasks);
-
+try {
+	$app = new Lib\Application();
+	$app->execute();
+}catch(Exception $e){
+	Lib\Console\Output::msg('Error on build! ('.$e->getMessage().')');
+}
 
 ?>

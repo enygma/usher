@@ -6,10 +6,21 @@ class Application
 {
 	private $currentTasks = array();
 
-	public function exec()
+	private $failureMessages = array();
+
+	public function execute()
 	{
-		$tasks = $this->getTasks();
-		var_dump($tasks);
+		foreach($this->getTasks() as $task){
+			try {
+				if(method_exists($task,'init')){
+					$task->init();
+				}
+				$task->execute();
+			}catch(Exception $e){
+				//$failureMessages[$task->configuration->id][] = $e->getMessage();
+				throw new \Exception('Application error: '.$e->getMessage());
+			}
+		}
 	}
 
 	public function getTasks()
@@ -18,9 +29,10 @@ class Application
 		$tasks 		 = Config::getOption('project.tasks');
 		$taskObjects = array();
 
-		foreach($tasks as $task){
+		foreach($tasks as $index => $task){
 			$taskName 		= '\Lib\\Task\\'.ucwords(strtolower($task->type));
 			$taskObject 	= new $taskName();
+			$task->id = $index;
 			$taskObject->configure($task);
 
 			$taskObjects[] 	= $taskObject;
