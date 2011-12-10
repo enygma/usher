@@ -1,0 +1,8 @@
+Usher: Simple Task Execution
+----------------------------------
+
+Usher is a tool for task execution, a generic framework that lets you define your own tasks and
+the actions they perform.
+
+Contact: ccornutt@phpdeveloper.org
+
