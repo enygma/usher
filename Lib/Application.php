@@ -30,7 +30,15 @@ class Application
 		$taskObjects = array();
 
 		foreach($tasks as $index => $task){
-			$taskName 		= '\Lib\\Task\\'.ucwords(strtolower($task->type));
+
+			$typeParts = explode('.',$task->type);
+			$typePath  = '';
+			foreach($typeParts as $part){
+				$typePath .= ucwords(strtolower($part)).'\\';
+			}
+			$typePath = substr($typePath,0,strlen($typePath)-1);
+			
+			$taskName 		= '\Lib\\Task\\'.$typePath;
 			$taskObject 	= new $taskName();
 			$task->id = $index;
 			$taskObject->configure($task);

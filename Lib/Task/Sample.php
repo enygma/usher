@@ -6,8 +6,7 @@ class Sample extends \Lib\Task
 {
 	public function execute()
 	{
-		echo 'executing sample';
-		throw new \Exception('fail!');
+		//throw new \Exception('fail!');
 	}
 }
 

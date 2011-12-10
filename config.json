@@ -5,6 +5,11 @@
 		"tasks" : [
 			{
 				"type" : "sample"
+			},
+			{
+				"type" 	 : "file.copy",
+				"source" : "/tmp/file1",
+				"target" : "/tmp/file2"
 			}
 		]
 	}

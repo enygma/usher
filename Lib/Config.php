@@ -11,8 +11,6 @@ class Config
 	{
 		// look for a configuration file
 		$configFilePath = self::$configFile;
-		echo 'cfg: '.$configFilePath."\n";
-
 		if(is_file($configFilePath)){
 			self::$currentConfig = json_decode(file_get_contents($configFilePath));
 		}else{
