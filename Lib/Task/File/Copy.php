@@ -18,7 +18,9 @@ class Copy extends \Lib\Task
 		$sourcePath = $this->getOption('source');
 		$targetPath = $this->getOption('target');
 
-		copy($sourcePath,$targetPath);
+		if($sourcePath != null && $targetPath != null){
+			copy($sourcePath,$targetPath);
+		}
 	}	
 }
 

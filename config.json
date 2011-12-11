@@ -10,6 +10,12 @@
 				"type" 	 : "file.copy",
 				"source" : "/tmp/file1",
 				"target" : "/tmp/file2"
+			},
+			{
+				"type"	 			: "package.phar",
+				"target" 			: "test.phar",
+				"sourceDirectory" 	: "/tmp/sampleapp",
+				"stubFile"			: "index.php"
 			}
 		]
 	}
