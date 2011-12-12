@@ -22,6 +22,17 @@ abstract class Task
 	public $configuration = array();
 
 	/**
+	 * Configuration settings for the current project
+	 * @var array
+	 */
+	public $parentProject = null;
+
+	public function __construct($project)
+	{
+		$this->parentProject = $project;	
+	}
+
+	/**
 	 * Assign configuration data for task object
 	 *
 	 * @param array $configData Configuration data
@@ -42,6 +53,12 @@ abstract class Task
 	{
 		return (isset($this->configuration->$optionName)) 
 			? $this->configuration->$optionName : null;
+	}
+
+	public function getProjectOption($optionName)
+	{
+		return (isset($this->parentProject->$optionName))
+			? $this->parentProject->$optionName : null;
 	}
 
 	/**

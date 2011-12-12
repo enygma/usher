@@ -46,6 +46,7 @@ class Application
 	{
 		// pull them from the config file and make them classes
 		$tasks 		 = Config::getOption('project.tasks');
+		$project	 = Config::getOption('project');
 		$taskObjects = array();
 
 		foreach($tasks as $index => $task){
@@ -58,7 +59,7 @@ class Application
 			$typePath = substr($typePath,0,strlen($typePath)-1);
 			
 			$taskName 		= '\Lib\\Task\\'.$typePath;
-			$taskObject 	= new $taskName();
+			$taskObject 	= new $taskName($project);
 			$task->id = $index;
 			$taskObject->configure($task);
 
