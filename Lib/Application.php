@@ -23,6 +23,8 @@ class Application
 	{
 		foreach($this->getTasks() as $task){
 			try {
+				Console\Output::msg('Executing task: '.$task->configuration->type);
+
 				if(method_exists($task,'init')){
 					$task->init();
 				}

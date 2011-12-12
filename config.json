@@ -1,7 +1,8 @@
 {
 	"project" : {
-		"name" 	: "My Test Project",
-		"author": "Chris Cornutt",
+		"name" 			: "My Test Project",
+		"author"		: "Chris Cornutt",
+		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
 			{
 				"type" : "sample"
@@ -13,9 +14,17 @@
 			},
 			{
 				"type"	 			: "package.phar",
-				"target" 			: "test.phar",
+				"target" 			: "/tmp/test.phar",
 				"sourceDirectory" 	: "/tmp/sampleapp",
 				"stubFile"			: "index.php"
+			},
+			{
+				"type"		: "package.composer",
+				"config"	: {
+					"require" : {
+						"propel/propel" : ">=2.0.0"
+					}
+				}
 			}
 		]
 	}

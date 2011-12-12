@@ -22,12 +22,12 @@ class Phar extends \Lib\Task
 			$phar = new \Phar($target,0,basename($target));
 			$phar->startBuffering();
 			$phar->buildFromDirectory($sourceDirectory);
-			
+
 			$stub = $phar->createDefaultStub();
 			$phar->setStub($stub);
 
 			$phar->stopBuffering();
-			$phar->compress(Phar::GZ);
+			//$phar->compress(Phar::GZ);
 
 		}else{
 			throw new \Exception('Cannot create phar! (read-only enabled)');
