@@ -4,8 +4,12 @@
 		"author"		: "Chris Cornutt",
 		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
+			{	"type"	  : "internal.var",
+				"value"   : "test value",
+				"name"    : "myinternalvar"
+			},
 			{
-				"type"    : "echo",
+				"type"    : "internal.echo",
 				"message" : "this is a test"
 			},
 			{
