@@ -18,8 +18,10 @@ class Copy extends \Lib\Task
 		$sourcePath = $this->getOption('source');
 		$targetPath = $this->getOption('target');
 
-		if($sourcePath != null && $targetPath != null){
+		if($sourcePath != null && $targetPath != null && is_file($sourcePath)){
 			copy($sourcePath,$targetPath);
+		}elseif(!is_file($sourcePath)){
+			throw new \Exception('Source file "'.$sourcePath.'" not found');
 		}
 	}	
 }

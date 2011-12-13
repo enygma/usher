@@ -13,6 +13,9 @@ class Phar extends \Lib\Task
 		if(!extension_loaded('phar')){
 			throw new \Exception('Phar extension not loaded');
 		}
+		if(!is_dir($sourceDirectory)){
+			throw new \Exception('Source directory not found');
+		}
 
 		// check to see if we can create phar files
 		$readOnly = ini_get('phar.readonly');

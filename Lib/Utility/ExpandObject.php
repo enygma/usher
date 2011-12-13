@@ -21,7 +21,7 @@ class ExpandObject
     public function expand($object,$config,$value=null,$operator='->')
     {
         if (!is_object($object)) {
-            throw new Exception('Invalid object given - cannot expand!');
+            throw new \Exception('Invalid object given - cannot expand!');
         }
 
         $callback = null;
@@ -64,7 +64,7 @@ class ExpandObject
     public function apply($object, $path, $value=null, $operator='->')
     {
         if (!is_object($object)) {
-            throw new Exception('Invalid object given - cannot apply!');
+            throw new \Exception('Invalid object given - cannot apply!');
         }
 
         $pathParts  = explode($operator, $path);
@@ -102,7 +102,7 @@ class ExpandObject
     public static function find($object, $path, $operator='->')
     {
         if (!is_object($object)) {
-            throw new Exception('Invalid object given - cannot find!');
+            throw new \Exception('Invalid object given - cannot find!');
         }
 
         $pathParts  = explode($operator, $path);
@@ -132,7 +132,7 @@ class ExpandObject
     public static function remove($object,$path,$operator='->')
     {
         if (!is_object($object)) {
-            throw new Exception('Invalid object given - cannot find!');
+            throw new \Exception('Invalid object given - cannot find!');
         }
         $pathParts  = explode($operator, $path);
         $ct         = 1;
@@ -161,7 +161,7 @@ class ExpandObject
     public static function makeCopy($object)
     {
         if (!is_object($object)) {
-            throw new Exception('Invalid object given - cannot find!');
+            throw new \Exception('Invalid object given - cannot find!');
         }else{
             return unserialize(serialize($object));
         }
