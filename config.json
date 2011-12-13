@@ -5,6 +5,10 @@
 		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
 			{
+				"type"    : "echo",
+				"message" : "this is a test"
+			},
+			{
 				"type" : "sample"
 			},
 			{
