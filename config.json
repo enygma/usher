@@ -4,22 +4,19 @@
 		"author"		: "Chris Cornutt",
 		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
-			{	
-				"type"	  : "internal.param",
-				"value"   : "test value",
-				"name"    : "myinternalvar"
+			{ 
+				"type"	: "internal.param",
+				"value"	: "git://github.com/enygma/usher.git",
+				"name" 	: "gitrepo"
 			},
 			{
 				"type"    : "vcs.git.clone",
-				"repositoryPath" : "git://github.com/enygma/usher.git",
+				"repositoryPath" : "param:gitrepo",
 				"destinationPath": "/tmp/usher-checkout"	
 			},
 			{
 				"type"    : "internal.write",
 				"message" : "this is a test"
-			},
-			{
-				"type"      : "syntax.phplint"
 			},
 			{
 				"type" : "sample"
