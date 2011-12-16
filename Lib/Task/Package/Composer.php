@@ -1,19 +1,45 @@
 <?php
 
 namespace Lib\Task\Package;
+use Lib\Utility as Util;
+use Lib\Console as Console;
 
 class Composer extends \Lib\Task
 {
-	private $composerPath = './bin/composer';
+	/**
+	 * Default path for Composer phar
+	 * @var string
+	 */
+	private $composerPath  = './bin/composer.phar';
+
+	/**
+	 * Path for temporary composer config
+	 * @var string
+	 */
+	private $configFile = 'composer.json';
 	
 	public function execute()
 	{
-		$config = $this->getOption('config');
+		$config 		= $this->getOption('config');
+		$projectPath	= $this->getProjectOption('projectBase');
+		$configString 	= Util\JsonHandler::output(json_encode($config));
+		$currentDir		= getcwd();
 
-		$exec = $this->composerPath;
+		$composerPath	= $this->getOption('composerPath');
+		if($composerPath != null){
+			$this->composerPath = $composerPath;
+		}
+		$exec = 'php '.$this->composerPath.' install';
 
-		echo $exec;
-		
+		// composer doesn't let us specify the config on the command line
+		// so let's write a temp file in our project path....
+		chdir($projectPath);
+		file_put_contents($this->configFile,$configString);
+
+		chdir($currentDir);
+
+		// now run it!
+		Console\Execute::run($exec,$projectPath);
 	}
 
 }
