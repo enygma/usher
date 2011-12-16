@@ -13,6 +13,9 @@
 				"message" : "this is a test"
 			},
 			{
+				"type"      : "syntax.phplint"
+			}
+			{
 				"type" : "sample"
 			},
 			{
