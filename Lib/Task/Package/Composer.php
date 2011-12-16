@@ -28,6 +28,8 @@ class Composer extends \Lib\Task
 		$composerPath	= $this->getOption('composerPath');
 		if($composerPath != null){
 			$this->composerPath = $composerPath;
+		}else{
+			throw new \Exception('Composer path not found in congifuration (composerPath)');
 		}
 		$exec = 'php '.$this->composerPath.' install';
 
