@@ -4,7 +4,8 @@
 		"author"		: "Chris Cornutt",
 		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
-			{	"type"	  : "internal.param",
+			{	
+				"type"	  : "internal.param",
 				"value"   : "test value",
 				"name"    : "myinternalvar"
 			},
@@ -19,7 +20,7 @@
 			},
 			{
 				"type"      : "syntax.phplint"
-			}
+			},
 			{
 				"type" : "sample"
 			},
