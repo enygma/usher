@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Task\Git;
+namespace Lib\Task\Vcs\Git;
 
-class Pull extends \Lib\Task
+class PullTask extends \Lib\Task
 {
 	
 	public function execute()

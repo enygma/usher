@@ -7,17 +7,17 @@ namespace Lib\Task\Syntax;
  * 
  * @package usher
  */
-class PhpLint extends \Lib\Task
+class PhpLintTask extends \Lib\Task
 {
 	
 	public function execute()
 	{
 		// get the project basedir
-		$projectDir = $this->getProjectConfig('projectBase');
+		$projectDir = $this->getProjectOption('projectBase');
 
-		if($projectDir != null){
+		if($projectDir != null && is_dir($projectDir)){
 			$exec = 'php -l '.$projectDir;
-			Console\Execute::run($exec);
+			\Lib\Console\Execute::run($exec);
 		}else{
 			throw new \Exception('Could not determine project directory (projectBase)');
 		}

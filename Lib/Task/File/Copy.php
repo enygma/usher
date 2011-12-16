@@ -11,7 +11,7 @@ namespace Lib\Task\File;
  *
  * @package Usher
  */
-class Copy extends \Lib\Task
+class CopyTask extends \Lib\Task
 {
 	public function execute()
 	{

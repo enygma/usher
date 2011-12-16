@@ -4,7 +4,7 @@ namespace Lib\Task\Package;
 use Lib\Utility as Util;
 use Lib\Console as Console;
 
-class Composer extends \Lib\Task
+class ComposerTask extends \Lib\Task
 {
 	/**
 	 * Default path for Composer phar
@@ -35,13 +35,17 @@ class Composer extends \Lib\Task
 
 		// composer doesn't let us specify the config on the command line
 		// so let's write a temp file in our project path....
-		chdir($projectPath);
-		file_put_contents($this->configFile,$configString);
+		if(is_dir($projectPath)){
+			chdir($projectPath);
+			file_put_contents($this->configFile,$configString);
 
-		chdir($currentDir);
+			chdir($currentDir);
 
-		// now run it!
-		Console\Execute::run($exec,$projectPath);
+			// now run it!
+			\Lib\Console\Execute::run($exec,$projectPath);
+		}else{
+			throw new \Exception('Project directory not found! '.$projectPath);
+		}
 	}
 
 }

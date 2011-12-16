@@ -2,7 +2,7 @@
 
 namespace Lib\Task\Syntax;
 
-class JsLint extends \Lib\Task
+class JsLintTask extends \Lib\Task
 {
 	
 	public function execute()

@@ -2,7 +2,7 @@
 
 namespace Lib\Task\Internal;
 
-class Write extends \Lib\Task
+class WriteTask extends \Lib\Task
 {
     public function execute()
     {

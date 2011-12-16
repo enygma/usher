@@ -1,10 +1,9 @@
 <?php
 
-namespace Lib\Task\Git;
+namespace Lib\Task\Vcs\Git;
 
-class Clone extends \Lib\Task
+class CloneTask extends \Lib\Task
 {
-	
 	public function execute()
 	{
 		$repositoryPath  = $this->getOption('repositoryPath');
@@ -18,7 +17,7 @@ class Clone extends \Lib\Task
 		}
 
 		$exec = 'git clone '.$repositoryPath.' '.$destinationPath;
-		Console\Execute::run($exec,$projectPath);
+		\Lib\Console\Execute::run($exec,$projectPath);
 	}
 
 }

@@ -7,7 +7,7 @@ namespace Lib\Task\Test;
  *
  * @package Usher
  */
-class PHPUnit extends \Lib\Task
+class PHPUnitTask extends \Lib\Task
 {
         public function execute()
         {

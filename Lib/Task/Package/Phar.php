@@ -2,7 +2,7 @@
 
 namespace Lib\Task\Package;
 
-class Phar extends \Lib\Task
+class PharTask extends \Lib\Task
 {
 	public function execute()
 	{

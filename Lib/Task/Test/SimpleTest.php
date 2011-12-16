@@ -7,7 +7,7 @@ namespace Lib\Task\Test;
  *
  * @package Usher
  */
-class SimpleTest extends \Lib\Task
+class SimpleTestTask extends \Lib\Task
 {
         public function execute()
         {

@@ -2,7 +2,7 @@
 
 namespace Lib\Task\Internal;
 
-class Param extends \Lib\Task
+class ParamTask extends \Lib\Task
 {
         public function execute()
         {
