@@ -2,6 +2,10 @@
 
 namespace Lib\Task\Vcs\Git;
 
+/**
+ * Clone a git repository from a remote source
+ *
+ */
 class CloneTask extends \Lib\Task
 {
 	public function execute()
@@ -17,7 +21,7 @@ class CloneTask extends \Lib\Task
 		}
 
 		$exec = 'git clone '.$repositoryPath.' '.$destinationPath;
-		\Lib\Console\Execute::run($exec,$projectPath);
+		\Lib\Console\Execute::run($exec);
 	}
 
 }

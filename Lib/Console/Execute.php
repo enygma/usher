@@ -13,7 +13,7 @@ class Execute
 
 		Output::msg('Executing command: "'.$command.'"');
 		ob_start();
-		system($command,$return);
+		$ret = system($command,$return);
 
 		$buffer = ob_get_clean();
 		if($buffer !== false){

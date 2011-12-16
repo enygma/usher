@@ -51,8 +51,17 @@ abstract class Task
 	 */
 	public function getOption($optionName)
 	{
-		return (isset($this->configuration->$optionName)) 
-			? $this->configuration->$optionName : null;
+		if(isset($this->configuration->$optionName)){
+			if(gettype($this->configuration->$optionName) == 'string' && 
+				stristr($this->configuration->$optionName,'param:') != false){
+					$optionName = str_replace('param:','',$this->configuration->$optionName);
+					return \Lib\Utility\SessionManage::get($optionName);
+			}else{
+				return $this->configuration->$optionName;
+			}
+		}else{
+			return null;
+		}
 	}
 
 	public function getProjectOption($optionName)

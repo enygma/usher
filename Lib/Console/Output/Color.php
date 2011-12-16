@@ -15,7 +15,7 @@ class Color
 	 */
 	private static $colorSet = array(
 		//'error'  => "\n\033[41m> ERROR: \033[01;30;40m (%s)\033[40;31m %s\n\n",
-		'error'  => "\033[41m>%s ERROR: \033[40;31m (%s)\033[40;31m %s\n\n",
+		'error'  => "\033[41m%s ERROR: \033[40;31m (%s)\033[40;31m %s\n\n",
 		'msg'    => "\033[33m%s %s\n\n",
 		'notice' => "\033[33m%s %s\n\n",
 		'reset'	 => "\033[0m"
