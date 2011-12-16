@@ -9,9 +9,12 @@ namespace Lib;
  */
 class Application
 {
-	private $currentTasks = array();
+	//private $failureMessages = array();
 
-	private $failureMessages = array();
+	private function setWorkingDir()
+	{
+		\Lib\Utility\SessionManage::set('workingDir',str_replace('/Lib','',__DIR__));
+	}
 
 	/**
 	 * Execute the build
@@ -21,6 +24,8 @@ class Application
 	 */
 	public function execute()
 	{
+		$this->setWorkingDir();
+		
 		foreach($this->getTasks() as $task){
 			try {
 				Console\Output::msg('Executing task: '.$task->configuration->type);
