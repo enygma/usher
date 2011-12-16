@@ -28,8 +28,10 @@ class Loader
 	 */
 	public static function autoload($className)
 	{
+		// Strip off "Task" from the end to find our task files
+		$pos 	   = strrpos($className,'Task');
+		$className = ($pos && $className != 'Lib\Task') ? substr($className,0,$pos) : $className;
 		$classPath = implode('/',explode('\\',$className)).'.php';
-		//echo $classPath."\n\n";	
 
 		if(is_file($classPath)){
 			include_once $classPath;

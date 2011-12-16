@@ -64,7 +64,8 @@ class Application
 			$typePath = substr($typePath,0,strlen($typePath)-1);
 			
 			$taskName 		= '\Lib\\Task\\'.$typePath;
-			$taskObject 	= new $taskName($project);
+			$className		= $taskName.'Task';
+			$taskObject 	= new $className($project);
 			$task->id = $index;
 			$taskObject->configure($task);
 
