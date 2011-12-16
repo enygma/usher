@@ -4,12 +4,12 @@
 		"author"		: "Chris Cornutt",
 		"projectBase" 	: "/tmp/projectbase",
 		"tasks" : [
-			{	"type"	  : "internal.var",
+			{	"type"	  : "internal.param",
 				"value"   : "test value",
 				"name"    : "myinternalvar"
 			},
 			{
-				"type"    : "internal.echo",
+				"type"    : "internal.write",
 				"message" : "this is a test"
 			},
 			{
@@ -23,9 +23,10 @@
 			},
 			{
 				"type"		: "package.composer",
+				"composerPath": "/Users/enygma/work/usher/bin/composer.phar",
 				"config"	: {
 					"require" : {
-						"propel/propel" : ">=2.0.0"
+						"propel/propel" : ">=2.0.0-dev"
 					}
 				}
 			}
