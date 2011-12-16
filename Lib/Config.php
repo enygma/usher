@@ -32,6 +32,9 @@ class Config
 		$configFilePath = self::$configFile;
 		if(is_file($configFilePath)){
 			self::$currentConfig = json_decode(file_get_contents($configFilePath));
+			if(self::$currentConfig == NULL){
+				throw new \Exception('Error parsing configuration file "'.self::$configFile.'"!');
+			}
 		}else{
 			throw new \Exception('No config file found!');
 		}
