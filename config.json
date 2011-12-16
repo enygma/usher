@@ -9,6 +9,11 @@
 				"name"    : "myinternalvar"
 			},
 			{
+				"type"    : "vcs.git.clone",
+				"repositoryPath" : "git://github.com/enygma/usher.git",
+				"destinationPath": "/tmp/usher-checkout"	
+			},
+			{
 				"type"    : "internal.write",
 				"message" : "this is a test"
 			},
