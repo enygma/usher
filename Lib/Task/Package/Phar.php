@@ -14,7 +14,7 @@ class Phar extends \Lib\Task
 			throw new \Exception('Phar extension not loaded');
 		}
 		if(!is_dir($sourceDirectory)){
-			throw new \Exception('Source directory not found');
+			throw new \Exception('Source directory not found: '.$sourceDirectory);
 		}
 
 		// check to see if we can create phar files
