@@ -11,7 +11,7 @@ class SimpleTestTask extends \Lib\Task
 {
         public function execute()
         {
-		// TODO
+        // TODO
         }
 }
 

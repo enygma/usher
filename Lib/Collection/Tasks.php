@@ -4,7 +4,7 @@ namespace Collection;
 
 class Tasks
 {
-	
+    
 }
 
 ?>

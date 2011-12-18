@@ -9,20 +9,20 @@ namespace Lib\Task\Syntax;
  */
 class PhpLintTask extends \Lib\Task
 {
-	
-	public function execute()
-	{
-		// get the project basedir
-		$projectDir = $this->getProjectOption('projectBase');
+    
+    public function execute()
+    {
+        // get the project basedir
+        $projectDir = $this->getProjectOption('projectBase');
 
-		if($projectDir != null && is_dir($projectDir)){
-			$exec = 'php -l '.$projectDir;
-			\Lib\Console\Execute::run($exec);
-		}else{
-			throw new \Exception('Could not determine project directory (projectBase)');
-		}
-		
-	}
+        if($projectDir != null && is_dir($projectDir)){
+            $exec = 'php -l '.$projectDir;
+            \Lib\Console\Execute::run($exec);
+        }else{
+            throw new \Exception('Could not determine project directory (projectBase)');
+        }
+        
+    }
 
 }
 

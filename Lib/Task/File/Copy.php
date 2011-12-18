@@ -13,17 +13,17 @@ namespace Usher\Lib\Task\File;
  */
 class CopyTask extends \Usher\Lib\Task
 {
-	public function execute()
-	{
-		$sourcePath = $this->getOption('source');
-		$targetPath = $this->getOption('target');
+    public function execute()
+    {
+        $sourcePath = $this->getOption('source');
+        $targetPath = $this->getOption('target');
 
-		if($sourcePath != null && $targetPath != null && is_file($sourcePath)){
-			copy($sourcePath,$targetPath);
-		}elseif(!is_file($sourcePath)){
-			throw new \Exception('Source file "'.$sourcePath.'" not found');
-		}
-	}	
+        if($sourcePath != null && $targetPath != null && is_file($sourcePath)){
+            copy($sourcePath,$targetPath);
+        }elseif(!is_file($sourcePath)){
+            throw new \Exception('Source file "'.$sourcePath.'" not found');
+        }
+    }   
 }
 
 ?>

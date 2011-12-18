@@ -4,13 +4,13 @@ namespace Lib;
 
 class Console
 {
-	private $option = array(
-	);
+    private $option = array(
+    );
 
-	private function parseArguments()
-	{
-		
-	}
+    private function parseArguments()
+    {
+        
+    }
 }
 
 ?>

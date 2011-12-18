@@ -1,41 +1,41 @@
 {
-	"project" : {
-		"name" 			: "My Test Project",
-		"author"		: "Chris Cornutt",
-		"projectBase" 	: "/tmp/projectbase",
-		"tasks" : [
-			{ 
-				"type"	: "internal.param",
-				"value"	: "git://github.com/enygma/usher.git",
-				"name" 	: "gitrepo"
-			},
-			{
-				"type"    : "vcs.git.clone",
-				"repositoryPath" : "param:gitrepo",
-				"destinationPath": "/tmp/usher-checkout"	
-			},
-			{
-				"type"    : "internal.write",
-				"message" : "this is a test"
-			},
-			{
-				"type" : "sample"
-			},
-			{
-				"type"	 			: "package.phar",
-				"target" 			: "/tmp/test.phar",
-				"sourceDirectory" 	: "/tmp/sampleapp",
-				"stubFile"			: "index.php"
-			},
-			{
-				"type"		: "package.composer",
-				"composerPath": "/Users/enygma/work/usher/bin/composer.phar",
-				"config"	: {
-					"require" : {
-						"propel/propel" : ">=2.0.0-dev"
-					}
-				}
-			}
-		]
-	}
+    "project" : {
+        "name"          : "My Test Project",
+        "author"        : "Chris Cornutt",
+        "projectBase"   : "/tmp/projectbase",
+        "tasks" : [
+            { 
+                "type"  : "internal.param",
+                "value" : "git://github.com/enygma/usher.git",
+                "name"  : "gitrepo"
+            },
+            {
+                "type"    : "vcs.git.clone",
+                "repositoryPath" : "param:gitrepo",
+                "destinationPath": "/tmp/usher-checkout"    
+            },
+            {
+                "type"    : "internal.write",
+                "message" : "this is a test"
+            },
+            {
+                "type" : "sample"
+            },
+            {
+                "type"              : "package.phar",
+                "target"            : "/tmp/test.phar",
+                "sourceDirectory"   : "/tmp/sampleapp",
+                "stubFile"          : "index.php"
+            },
+            {
+                "type"      : "package.composer",
+                "composerPath": "/Users/enygma/work/usher/bin/composer.phar",
+                "config"    : {
+                    "require" : {
+                        "propel/propel" : ">=2.0.0-dev"
+                    }
+                }
+            }
+        ]
+    }
 }
