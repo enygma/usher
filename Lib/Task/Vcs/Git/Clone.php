@@ -21,7 +21,9 @@ class CloneTask extends \Usher\Lib\Task
         }
 
         $exec = 'git clone '.$repositoryPath.' '.$destinationPath;
-        \Usher\Lib\Console\Execute::run($exec);
+        $args = array('clone',$repositoryPath,$destinationPath);
+
+        \Usher\Lib\Console\Execute::run($exec,$args);
     }
 
 }
