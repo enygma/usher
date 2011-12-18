@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib;
+namespace Usher\Lib;
 
 /**
  * Loader class (sets up autoloader)
@@ -16,7 +16,7 @@ class Loader
 	 */
 	public static function init()
 	{
-		spl_autoload_register(array('\Lib\Loader','autoload'));	
+		spl_autoload_register(array('Usher\Lib\Loader','autoload'));	
 	}
 
 	/**
@@ -28,6 +28,8 @@ class Loader
 	 */
 	public static function autoload($className)
 	{
+		$className = str_replace('Usher\\','',$className);
+
 		// Strip off "Task" from the end to find our task files
 		$pos 	   = strrpos($className,'Task');
 		$className = ($pos && $className != 'Lib\Task') ? substr($className,0,$pos) : $className;

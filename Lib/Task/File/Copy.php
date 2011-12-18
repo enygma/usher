@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Task\File;
+namespace Usher\Lib\Task\File;
 
 /**
  * File copy task
@@ -11,7 +11,7 @@ namespace Lib\Task\File;
  *
  * @package Usher
  */
-class CopyTask extends \Lib\Task
+class CopyTask extends \Usher\Lib\Task
 {
 	public function execute()
 	{

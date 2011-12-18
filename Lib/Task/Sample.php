@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Task;
+namespace Usher\Lib\Task;
 
-class SampleTask extends \Lib\Task
+class SampleTask extends \Usher\Lib\Task
 {
 	public function execute()
 	{

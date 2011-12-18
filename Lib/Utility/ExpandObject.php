@@ -3,7 +3,7 @@
  * Expand out objects and values based on an object+path pairing
  *
  */
-namespace Lib\Utility;
+namespace Usher\Lib\Utility;
 
 class ExpandObject
 {

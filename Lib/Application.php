@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib;
+namespace Usher\Lib;
 
 /**
  * Main application execution class
@@ -13,7 +13,7 @@ class Application
 
 	private function setWorkingDir()
 	{
-		\Lib\Utility\SessionManage::set('workingDir',str_replace('/Lib','',__DIR__));
+		Utility\SessionManage::set('workingDir',str_replace('/Lib','',__DIR__));
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Application
 					$task->init();
 				}
 				$task->execute();
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				//$failureMessages[$task->configuration->id][] = $e->getMessage();
 				throw new \Exception('Application error: '.$e->getMessage());
 			}
@@ -63,7 +63,7 @@ class Application
 			}
 			$typePath = substr($typePath,0,strlen($typePath)-1);
 			
-			$taskName 		= '\Lib\\Task\\'.$typePath;
+			$taskName 		= '\Usher\\Lib\\Task\\'.$typePath;
 			$className		= $taskName.'Task';
 			$taskObject 	= new $className($project);
 			$task->id = $index;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Utility;
+namespace Usher\Lib\Utility;
 
 class JsonHandler
 {

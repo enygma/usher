@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Task\Internal;
+namespace Usher\Lib\Task\Internal;
 
-class ParamTask extends \Lib\Task
+class ParamTask extends \Usher\Lib\Task
 {
     public function execute()
     {
@@ -10,7 +10,7 @@ class ParamTask extends \Lib\Task
 		$value = $this->getOption('value');
 		$name  = $this->getOption('name');
 
-		\Lib\Utility\SessionManage::set($name,$value);
+		\Usher\Lib\Utility\SessionManage::set($name,$value);
 	}
 }
 

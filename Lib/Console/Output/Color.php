@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Console\Output;
+namespace Usher\Lib\Console\Output;
 
 /**
  * Handle the color formatting of the console output

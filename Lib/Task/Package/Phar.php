@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Task\Package;
+namespace Usher\Lib\Task\Package;
 
-class PharTask extends \Lib\Task
+class PharTask extends \Usher\Lib\Task
 {
 	public function execute()
 	{

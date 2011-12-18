@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib;
+namespace Usher\Lib;
 
 /**
  * Abstract definition of a Task
@@ -55,7 +55,7 @@ abstract class Task
 			if(gettype($this->configuration->$optionName) == 'string' && 
 				stristr($this->configuration->$optionName,'param:') != false){
 					$optionName = str_replace('param:','',$this->configuration->$optionName);
-					return \Lib\Utility\SessionManage::get($optionName);
+					return \Usher\Lib\Utility\SessionManage::get($optionName);
 			}else{
 				return $this->configuration->$optionName;
 			}

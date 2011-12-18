@@ -1,8 +1,8 @@
 <?php
 
-namespace Lib\Task\Vcs\Git;
+namespace Usher\Lib\Task\Vcs\Git;
 
-class PullTask extends \Lib\Task
+class PullTask extends \Usher\Lib\Task
 {
 	
 	public function execute()

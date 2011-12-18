@@ -1,14 +1,14 @@
 <?php
 
-namespace Lib\Task\Internal;
+namespace Usher\Lib\Task\Internal;
 
-class WriteTask extends \Lib\Task
+class WriteTask extends \Usher\Lib\Task
 {
     public function execute()
     {
 		//echo out the string given in the parameter
 		$message = $this->getOption('message');
-		\Lib\Console\Output::msg($message);		
+		\Usher\Lib\Console\Output::msg($message);		
 	}
 }
 

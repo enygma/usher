@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Console;
+namespace Usher\Lib\Console;
 
 /**
  * Standard output class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib;
+namespace Usher\Lib;
 
 /**
  * Works with the JSON-based configuration file

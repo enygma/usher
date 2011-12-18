@@ -4,7 +4,7 @@
  * Generic repository for execution/session specific information
  *
  */
-namespace Lib\Utility;
+namespace Usher\Lib\Utility;
 
 class SessionManage
 {

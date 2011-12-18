@@ -1,10 +1,10 @@
 <?php
 
-namespace Lib\Task\Package;
-use Lib\Utility as Util;
-use Lib\Console as Console;
+namespace Usher\Lib\Task\Package;
+use Usher\Lib\Utility as Util;
+use Usher\Lib\Console as Console;
 
-class ComposerTask extends \Lib\Task
+class ComposerTask extends \Usher\Lib\Task
 {
 	/**
 	 * Default path for Composer phar
@@ -42,7 +42,7 @@ class ComposerTask extends \Lib\Task
 			chdir($currentDir);
 
 			// now run it!
-			\Lib\Console\Execute::run($exec,$projectPath);
+			Console\Execute::run($exec,$projectPath);
 		}else{
 			throw new \Exception('Project directory not found! '.$projectPath);
 		}

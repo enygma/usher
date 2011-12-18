@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Console;
+namespace Usher\Lib\Console;
 
 /**
  * Handles execution and output buffering of commands

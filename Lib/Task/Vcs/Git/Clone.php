@@ -1,12 +1,12 @@
 <?php
 
-namespace Lib\Task\Vcs\Git;
+namespace Usher\Lib\Task\Vcs\Git;
 
 /**
  * Clone a git repository from a remote source
  *
  */
-class CloneTask extends \Lib\Task
+class CloneTask extends \Usher\Lib\Task
 {
 	public function execute()
 	{
@@ -21,7 +21,7 @@ class CloneTask extends \Lib\Task
 		}
 
 		$exec = 'git clone '.$repositoryPath.' '.$destinationPath;
-		\Lib\Console\Execute::run($exec);
+		\Usher\Lib\Console\Execute::run($exec);
 	}
 
 }
