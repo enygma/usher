@@ -6,5 +6,7 @@ the actions they perform.
 
 See the github wiki for more details on current tasks: https://github.com/enygma/usher/wiki
 
+Check out our "Getting Started" guide too! https://github.com/enygma/usher/wiki/Getting-Started-with-Usher
+
 Contact: ccornutt@phpdeveloper.org
 
