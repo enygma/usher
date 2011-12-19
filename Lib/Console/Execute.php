@@ -35,7 +35,7 @@ class Execute
             }
             fclose($pipes[1]);
 
-            $return = proc_close($process);
+            $returnCode = proc_close($process);
             Output::msg("Execution result:\n".$return);
         }
 
