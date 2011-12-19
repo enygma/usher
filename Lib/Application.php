@@ -1,19 +1,37 @@
 <?php
+/**
+ * Main application handling class
+ *
+ * PHP Version 5
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
+ */
 
 namespace Usher\Lib;
 
 /**
- * Main application execution class
+ * Class Application
  *
- * @package Usher
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
  */
 class Application
 {
-    //private $failureMessages = array();
-
-    private function setWorkingDir()
+    /**
+     * Set the current working directory
+     *
+     * @return void
+     */
+    private function _setWorkingDir()
     {
-        Utility\SessionManage::set('workingDir',str_replace('/Lib','',__DIR__));
+        Utility\SessionManage::set('workingDir', str_replace('/Lib', '', __DIR__));
     }
 
     /**
@@ -24,13 +42,13 @@ class Application
      */
     public function execute()
     {
-        $this->setWorkingDir();
+        $this->_setWorkingDir();
         
-        foreach($this->getTasks() as $task){
+        foreach ($this->getTasks() as $task) {
             try {
                 Console\Output::msg('Executing task: '.$task->configuration->type);
 
-                if(method_exists($task,'init')){
+                if (method_exists($task, 'init')) {
                     $task->init();
                 }
                 $task->execute();
@@ -54,14 +72,14 @@ class Application
         $project     = Config::getOption('project');
         $taskObjects = array();
 
-        foreach($tasks as $index => $task){
+        foreach ($tasks as $index => $task) {
 
-            $typeParts = explode('.',$task->type);
+            $typeParts = explode('.', $task->type);
             $typePath  = '';
-            foreach($typeParts as $part){
+            foreach ($typeParts as $part) {
                 $typePath .= ucwords(strtolower($part)).'\\';
             }
-            $typePath = substr($typePath,0,strlen($typePath)-1);
+            $typePath = substr($typePath, 0, strlen($typePath)-1);
             
             $taskName       = '\Usher\\Lib\\Task\\'.$typePath;
             $className      = $taskName.'Task';

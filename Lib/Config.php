@@ -1,11 +1,26 @@
 <?php
+/**
+ * Handling for the default configuration file
+ *
+ * PHP Version 5
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
+ */
 
 namespace Usher\Lib;
 
 /**
- * Works with the JSON-based configuration file
+ * Class Config
  *
- * @package Usher
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
  */
 class Config
 {
@@ -13,29 +28,32 @@ class Config
      * Filename for the default config file
      * @var string
      */
-    private static $configFile      = 'config.json';
+    private static $_configFile      = 'config.json';
 
     /**
      * Current configuration options
      * @var array
      */
-    private static $currentConfig   = null;
+    private static $_currentConfig   = null;
 
     /**
      * Load the configuration from the given file
      *
+     * @throws Exception
      * @return void
      */
     public static function load()
     {
         // look for a configuration file
-        $configFilePath = self::$configFile;
-        if(is_file($configFilePath)){
-            self::$currentConfig = json_decode(file_get_contents($configFilePath));
-            if(self::$currentConfig == NULL){
-                throw new \Exception('Error parsing configuration file "'.self::$configFile.'"!');
+        $configFilePath = self::$_configFile;
+        if (is_file($configFilePath)) {
+            self::$_currentConfig = json_decode(file_get_contents($configFilePath));
+            if (self::$_currentConfig == null) {
+                throw new \Exception(
+                    'Error parsing configuration file "'.self::$_configFile.'"!'
+                );
             }
-        }else{
+        } else {
             throw new \Exception('No config file found!');
         }
     }
@@ -44,12 +62,13 @@ class Config
      * Get an option from the configuration file
      *
      * @param string $optionPath Option path to find
-     * @param mixed Found result or null
+     *
+     * @return Option value (or null)
      */
     public function getOption($optionPath)
     {
         $ex = new Utility\ExpandObject();
-        return $ex->find(self::$currentConfig,$optionPath,'.');
+        return $ex->find(self::$_currentConfig, $optionPath, '.');
     }
 }
 
