@@ -1,14 +1,35 @@
 <?php
+ /**
+ * Execute the given command
+ * 
+ * PHP Version 5
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
+ */
 
 namespace Lib\Task\System;
 
 /**
- * Used to run a given command
- * 
- * @package usher
+ * Class ExecTask
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
  */
 class ExecTask extends \Lib\Task
 {
+    /**
+     * Execute the task
+     *
+     * @throws Exception
+     * @return void
+     */
     public function execute()
     {
         $command = $this->getOption('command');
