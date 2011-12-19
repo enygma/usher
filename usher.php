@@ -1,9 +1,22 @@
 #!/usr/bin/php
 <?php
+/**
+ * Usher.php
+ *
+ * PHP Version 5
+ *
+ * Main runner - loads configuration, finds and executes tasks
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
+ */
 
 namespace Usher;
 
-include_once 'Lib/Loader.php';
+require_once 'Lib/Loader.php';
 
 try {
     Lib\Loader::init();
