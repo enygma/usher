@@ -1,10 +1,26 @@
 <?php
 /**
  * Expand out objects and values based on an object+path pairing
+ * 
+ * PHP Version 5
  *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
  */
 namespace Usher\Lib\Utility;
 
+/**
+ * Class ExpandObject
+ *
+ * @category Build
+ * @package  User
+ * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT
+ * @link     http://github.com/enygma/usher
+ */
 class ExpandObject
 {
     /**
@@ -13,9 +29,11 @@ class ExpandObject
      * $config[0] should always be the path
      * $config[1] can be the method to call
      *
-     * @param object $object Object to expand on
-     * @param array $config Configuration options
-     * @param mixed $value Value to apply if callback is used
+     * @param object $object   Object to expand on
+     * @param array  $config   Configuration options
+     * @param mixed  $value    Value to apply if callback is used
+     * @param string $operator "Glue" operator
+     *
      * @return object $object Object with value attached
      */
     public function expand($object,$config,$value=null,$operator='->')
@@ -28,7 +46,7 @@ class ExpandObject
         if (is_array($config)) {
             $path       = $config[0];
             $callback   = $config[1];
-        }else{
+        } else {
             $path = $config;
         }
 
@@ -37,11 +55,11 @@ class ExpandObject
         $ct             = 1;
         $originalObj    = $object;
 
-        foreach($pathParts as $path){
+        foreach ($pathParts as $path) {
             if (!isset($object->$path)) {
                 // what a hack! it just prevents notices from being thrown
                 @$object = $object->$path;
-            }else{
+            } else {
                 $object = $object->$path;
             }
             if ($ct == $pcount && $callback != null) {
@@ -56,9 +74,11 @@ class ExpandObject
     /**
      * Apply a value to a property on an object
      *
-     * @param object $object Object to apply property on
-     * @param string $path Path for property
-     * @param mixed $value[optional] Property value
+     * @param object $object   Object to apply property on
+     * @param string $path     Path for property
+     * @param mixed  $value    Property value
+     * @param string $operator "Glue" operator
+     *
      * @return void
      */
     public function apply($object, $path, $value=null, $operator='->')
@@ -72,10 +92,10 @@ class ExpandObject
         $pathCount  = count($pathParts);
         $ct         = 1;
 
-        foreach($pathParts as $pathKey => $path){
+        foreach ($pathParts as $pathKey => $path) {
             if ($pathCount==$ct) {
                 $object->{$path} = $value;
-            }else{
+            } else {
                 if (!isset($object->{$path})) {
                     $object->{$path} = new stdClass();
                 }
@@ -94,8 +114,10 @@ class ExpandObject
     /**
      * Find a value on a given path
      *
-     * @param object $object Object to search on
-     * @param string $path Path to locate
+     * @param object $object   Object to search on
+     * @param string $path     Path to locate
+     * @param string $operator "Glue" operator
+     *
      * @static
      * @return object Found value (or as far down the path as it could get)
      */
@@ -107,10 +129,10 @@ class ExpandObject
 
         $pathParts  = explode($operator, $path);
         $ct         = 1;
-        foreach($pathParts as $path){
+        foreach ($pathParts as $path) {
             if (isset($object->$path)) {
                 $object = $object->$path;
-            }else{
+            } else {
                 // we've hit something we couldn't find
                 if ($ct<=count($pathParts)) {
                     return null;
@@ -124,8 +146,10 @@ class ExpandObject
     /**
      * Given the path, remove the value
      *
-     * @param  object $object Object to remove value from
-     * @param  string $path Object path (Ex. "foo->bar->baz")
+     * @param object $object   Object to remove value from
+     * @param string $path     Object path (Ex. "foo->bar->baz")
+     * @param string $operator "Glue" operator
+     *
      * @static
      * @return object Object minus value
      */
@@ -136,13 +160,13 @@ class ExpandObject
         }
         $pathParts  = explode($operator, $path);
         $ct         = 1;
-        foreach($pathParts as $path){
+        foreach ($pathParts as $path) {
             if (isset($object->$path)) {
                 $ct++;
                 if (count($pathParts) == $ct) {
                     // remove the value
                     unset($object->$path);
-                }else{
+                } else {
                     $object = $object->$path;
                 }
             }
@@ -155,6 +179,7 @@ class ExpandObject
      * This makes a true copy instead of the reference like "clone" makes
      *
      * @param object $object Object to copy
+     *
      * @static
      * @return mixed Copy of object
      */
@@ -162,7 +187,7 @@ class ExpandObject
     {
         if (!is_object($object)) {
             throw new \Exception('Invalid object given - cannot find!');
-        }else{
+        } else {
             return unserialize(serialize($object));
         }
     }
@@ -172,16 +197,17 @@ class ExpandObject
     * Map the properties from one object to the other based on the property list
     * toObject is passed by reference so values are directly applied
     *
-    * @param object $fromObject Object to pull the values from
-    * @param object $toObject Object to apply the values to
-    * @param array $propertyList a toObject->property to fromObject->map array list
+    * @param object $fromObject   Object to pull the values from
+    * @param object &$toObject    Object to apply the values to
+    * @param array  $propertyList A toObject->property to fromObject->map array list
+    *
     * @static
     * @return void
     */
     public static function mapProperties($fromObject, &$toObject, $propertyList)
     {
         // for each of the properties
-        foreach($propertyList as $fromProperty => $toPath){
+        foreach ($propertyList as $fromProperty => $toPath) {
             $toObject->$fromProperty = self::expand($fromObject, $toPath);
         }
     }
