@@ -26,7 +26,8 @@ try {
     die();
 }
 
-Lib\Console\Output::msg('Executing project "'.Lib\Config::getOption('project.name').'"');
+$projectName = Lib\Config::getOption('project.name');
+Lib\Console\Output::msg('Executing project "'.$projectName.'"');
 
 // get and execute our tasks
 try {
