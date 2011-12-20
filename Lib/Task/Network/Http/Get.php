@@ -53,6 +53,7 @@ class GetTask extends \Usher\Lib\Task
         $outputFile = $this->getOption('outputFile');
         $parsedUrl  = parse_url($url);
         $output     = '';
+        $path       = (isset($parsedUrl['path'])) ? $parsedUrl['path'] : '/';
 
         if (isset($parsedUrl['host'])) {
 
@@ -65,7 +66,7 @@ class GetTask extends \Usher\Lib\Task
                     $host.' ('.$erno.':'.$errstr.')'
                 );
             } else {
-                $request = $this->_buildRequest();
+                $request = $this->_buildRequest($path);
                 fwrite($this->_socket, $request);
                 while (!feof($this->_socket)) {
                     $output .= fread($this->_socket, 1024);
