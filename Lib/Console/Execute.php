@@ -36,6 +36,9 @@ class Execute
     {
         Output::msg('Executing command: "'.$command.'"');
 
+	// filter the command
+        $command = escapeshellcmd($command);
+
         $descSpec = array(
             0 => array('pipe', 'r'), //stdin
             1 => array('pipe', 'w'), //stdout
