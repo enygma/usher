@@ -1,6 +1,6 @@
 <?php
 /**
- * Generic console handling class
+ * Abstract definiton of a command-line option
  *
  * PHP Version 5
  *
@@ -14,7 +14,7 @@
 namespace Usher\Lib\Console;
 
 /**
- * Class Console
+ * Class Option
  *
  * @category Build
  * @package  User
@@ -22,9 +22,14 @@ namespace Usher\Lib\Console;
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  */
-class Arguments
+abstract class Option
 {
-    //nothing to see, move along 
+    /**
+     * Execute the given option
+     *
+     * @return bool Stop/Not stop execution
+     */
+    public abstract function execute();
 }
 
 ?>
