@@ -21,6 +21,7 @@ require_once 'Lib/Loader.php';
 try {
     Lib\Loader::init();
     Lib\Config::load();
+    Lib\Console::init();
 }catch(\Exception $e){
     Lib\Console\Output::msg('Error on setup: '.$e->getMessage());
     die();
