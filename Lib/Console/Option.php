@@ -27,9 +27,11 @@ abstract class Option
     /**
      * Execute the given option
      *
+     * @param array $argumentData Argument data
+     *
      * @return bool Stop/Not stop execution
      */
-    public abstract function execute();
+    public abstract function execute($argumentData);
 }
 
 ?>

@@ -46,6 +46,13 @@ class Config
     {
         // look for a configuration file
         $configFilePath = self::$_configFile;
+
+        // see if we have a config file option on the command line
+        $path = \Usher\Lib\Console::getOption('configFilePath');
+        if ($path !== null) {
+            $configFilePath = $path;
+        }
+
         if (is_file($configFilePath)) {
             self::$_currentConfig = json_decode(file_get_contents($configFilePath));
             if (self::$_currentConfig == null) {

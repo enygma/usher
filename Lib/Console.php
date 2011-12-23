@@ -37,6 +37,31 @@ class Console
     }
 
     /**
+     * Set an option in the console namespace
+     *
+     * @param string $optionName Option name
+     * @param mixed  $value      Option value
+     *
+     * @return void
+     */
+    public function setOption($optionName,$value)
+    {
+        return \Usher\Lib\Utility\SessionManage::set($optionName, $value, 'console');
+    }
+
+    /**
+     * Get the console option from the session
+     *
+     * @param string $optionName Name of the option to get
+     * 
+     * @return mixed Option value
+     */
+    public function getOption($optionName)
+    {
+        return \Usher\Lib\Utility\SessionManage::get($optionName, 'console');
+    }
+
+    /**
      * Parse the current options given on the command line
      *
      * @return void
@@ -63,12 +88,16 @@ class Console
                 ucwords(strtolower($argument[0]));
 
             try {
-                $stopExecution = $nsPath::execute();
-                if ($stopExecution == false) {
-                    die();
+                try {
+                    $stopExecution = $nsPath::execute($argument);
+                    if ($stopExecution == false) {
+                        die();
+                    }
+                } catch(\RuntimeException $re) {
+                    \Usher\Lib\Console\Output::msg($re->getMessage());
                 }
             } catch(\Exception $e) {
-                echo $e->getMessage();
+                // can't find the argument class
                 \Usher\Lib\Console\Output::msg(
                     'Option "'.$argument[0].'" not found.'
                 );

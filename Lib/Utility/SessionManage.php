@@ -31,27 +31,29 @@ class SessionManage
     /**
      * Set a value into the registry
      *
-     * @param string $keyname Key name
-     * @param mixed  $value   Value for the key
+     * @param string $keyname   Key name
+     * @param mixed  $value     Value for the key
+     * @param string $namespace Namespace (defaults to general)
      *
      * @return void
      */
-    public static function set($keyname,$value)
+    public static function set($keyname,$value,$namespace='general')
     {
-        self::$_repository[$keyname] = $value;
+        self::$_repository[$namespace][$keyname] = $value;
     }
 
     /**
      * Get a keyname's value from the repository
      *
-     * @param string $keyname Key name
+     * @param string $keyname   Key name
+     * @param string $namespace Namespace (defaults to general)
      *
      * @return mixed Value
      */
-    public static function get($keyname)
+    public static function get($keyname,$namespace='general')
     {
-        return (isset(self::$_repository[$keyname])) 
-            ? self::$_repository[$keyname] : null;
+        return (isset(self::$_repository[$namespace][$keyname])) 
+            ? self::$_repository[$namespace][$keyname] : null;
     }
 }
 

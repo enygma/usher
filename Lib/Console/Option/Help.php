@@ -28,9 +28,11 @@ class Help extends \Usher\Lib\Console\Option
     /**
      * Execute the Help option
      *
+     * @param array $argumentData Argument data
+     *
      * @return bool Stop/Don't stop execution
      */
-    public function execute()
+    public function execute($argumentData)
     {
         \Usher\Lib\Console\Output::msg('Help Information:');
 
