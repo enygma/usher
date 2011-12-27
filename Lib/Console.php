@@ -76,8 +76,8 @@ class Console
             ? array_slice($_SERVER['argv'], 1, count($_SERVER['argv'])-1) : array();
 
         foreach ($arguments as $argument) {
-            // remove the "-" or "--"
-            $argument   = str_replace(array('-', '--'), '', $argument);
+            // remove the "-" or "--", but only at the beginning
+            $argument   = preg_replace('/^\-+/', '', $argument);
 
             // split off the key/value
             $parts      = explode('=', $argument);
