@@ -22,7 +22,7 @@ namespace Usher\Lib\Console\Option;
  * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
- * @description Help option (display this info)
+ * @description Define a custom tasks directory
  */
 class Customdir extends \Usher\Lib\Console\Option
 {
@@ -37,7 +37,7 @@ class Customdir extends \Usher\Lib\Console\Option
     {
         $directory = $argumentData[1];
         if (!is_dir($directory)) {
-            throw new \Exception(
+            throw new \RuntimeException(
                 'Tasks directory "'.$directory.'" could not be accessed.'
             );
         }
