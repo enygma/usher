@@ -18,14 +18,10 @@ namespace Usher;
 
 require_once 'Lib/Loader.php';
 
+ob_start();
 try {
     Lib\Loader::init();
     Lib\Console::init();
-
-    if (Lib\Console::getOption('runQuiet') == true) {
-        ob_start();
-    }
-
     Lib\Config::load();
 }catch(\Exception $e){
     Lib\Console\Output::msg('Error on setup: '.$e->getMessage());
@@ -43,9 +39,13 @@ try {
     Lib\Console\Output::error('Error on build! ('.$e->getMessage().')');
 }
 
+if (Lib\Console::getOption('logFile') !== null) {
+    $output = ob_get_contents();
+    Lib\Utility\Logger::write($output);
+}
+
 if (Lib\Console::getOption('runQuiet') == true) {
     ob_end_clean();
-    //ob_end_flush();
 }
 
 ?>
