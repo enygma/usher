@@ -15,16 +15,16 @@
 namespace Usher\Lib\Console\Option;
 
 /**
- * Class Quiet
+ * Class Customdir
  *
- * @category TaskDir
+ * @category Build
  * @package  User
  * @author   Chris Cornutt <ccornutt@phpdeveloper.org>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  * @description Help option (display this info)
  */
-class TaskDir extends \Usher\Lib\Console\Option
+class Customdir extends \Usher\Lib\Console\Option
 {
     /**
      * Execute the TaskDir option
