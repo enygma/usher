@@ -34,13 +34,12 @@ class Project extends \Usher\Lib\Console\Option
      */
     public function execute($argumentData)
     {
-
-        if(count($argumentData) != 2) {
+        if (count($argumentData) != 2) {
             throw new \RuntimeException('Project argument requires a project name.');
             return false;
         }
         
-        \Usher\Lib\Console::setOption('selectedProject',$argumentData[1]);
+        \Usher\Lib\Console::setOption('selectedProject', $argumentData[1]);
         return true;
     }
 }
