@@ -30,6 +30,11 @@ class Logger
      */
     private static $_logfile = 'execute.log';
 
+    /**
+     * Build the Logger object
+     *
+     * @return void
+     */
     public function __construct()
     {
         //nothing to see, move along
