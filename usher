@@ -1,0 +1,14 @@
+PHP_BINPATH=$(which php 2> /dev/null)
+
+if [ "$PHP_BINPATH" = '' ]
+    then
+        echo "'which' command failed to locate the PHP binary"
+        exit 1
+fi
+
+if [ -x $PHP_BINPATH ]
+    then
+        $PHP_BINPATH usher.php "$@"
+    else
+        echo "'which' command failed to locate the PHP binary"
+fi
