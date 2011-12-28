@@ -95,6 +95,9 @@ class Console
                     }
                 } catch(\RuntimeException $re) {
                     \Usher\Lib\Console\Output::msg($re->getMessage());
+                    if ($stopExecution == false) {
+                        die();
+                    }
                 }
             } catch(\Exception $e) {
                 // can't find the argument class

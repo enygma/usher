@@ -35,6 +35,7 @@ class Config
      * @var array
      */
     private static $_currentConfig   = null;
+    private static $_wholeConfig     = null;
 
     /**
      * Load the configuration from the given file
@@ -54,12 +55,31 @@ class Config
         }
 
         if (is_file($configFilePath)) {
-            self::$_currentConfig = json_decode(file_get_contents($configFilePath));
+            self::$_currentConfig = self::$_wholeConfig = json_decode(file_get_contents($configFilePath));
             if (self::$_currentConfig == null) {
                 throw new \Exception(
                     'Error parsing configuration file "'.self::$_configFile.'"!'
                 );
             }
+            
+            if(is_array(self::$_currentConfig)) {
+                self::$_currentConfig = false;
+            	
+                $project = \Usher\Lib\Console::getOption('selectedProject');
+                if(!$project) throw new \Exception("No project was selected.");
+                
+                foreach(self::$_wholeConfig as $conf) {
+                    if($conf->project->name == $project) {
+                    	self::$_currentConfig = $conf;
+                    	break;
+                    }
+                }
+                
+                if(!self::$_currentConfig) {
+                    throw new \Exception("No project named {$project} in config file.");
+                }
+            }
+            
         } else {
             throw new \Exception('No config file found!');
         }
