@@ -42,7 +42,25 @@ class Customdir extends \Usher\Lib\Console\Option
             );
         }
         \Usher\Lib\Console::setOption('customTaskDir', $directory);
+
+        \Usher\Lib\Loader::registerAutoload(
+            array(__CLASS__,'autoload')
+        );
+
         return true;
+    }
+
+    /**
+     * Set up the autoloader with our new directory
+     *
+     * @param string $className Name of class to load
+     *
+     * @return void
+     */
+    public static function autoload($className)
+    {
+        $directory = \Usher\Lib\Console::getOption('customTaskDir');
+        \Usher\Lib\Loader::autoload($className, $directory);
     }
 }
 

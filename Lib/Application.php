@@ -72,12 +72,6 @@ class Application
         $project     = Config::getOption('project');
         $taskObjects = array();
 
-        // see if we have any custom tasks
-        $customTaskDir = \Usher\Lib\Console::getOption('customTaskDir');
-        if ($customTaskDir !== null) {
-            
-        }
-
         foreach ($tasks as $index => $task) {
 
             $typeParts = explode('.', $task->type);
