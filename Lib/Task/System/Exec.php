@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Lib\Task\System;
+namespace Usher\Lib\Task\System;
 
 /**
  * Class ExecTask
@@ -22,7 +22,7 @@ namespace Lib\Task\System;
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  */
-class ExecTask extends \Lib\Task
+class ExecTask extends \Usher\Lib\Task
 {
     /**
      * Execute the task
@@ -34,7 +34,7 @@ class ExecTask extends \Lib\Task
     {
         $command = $this->getOption('command');
         try {
-            \Lib\Console\Execute::run($command);
+            \Usher\Lib\Console\Execute::run($command);
         }catch(\Exception $e){
             throw new \Exception('Error on command: '.$e->getMessage());
         }

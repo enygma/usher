@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Lib\Task\Test;
+namespace Usher\Lib\Task\Test;
 
 /**
  * Class PHPUnitTask
@@ -22,7 +22,7 @@ namespace Lib\Task\Test;
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  */
-class PHPUnitTask extends \Lib\Task
+class PhpunitTask extends \Usher\Lib\Task
 {
     /**
      * Execute the task
@@ -31,7 +31,24 @@ class PHPUnitTask extends \Lib\Task
      */
     public function execute()
     {
-        // TODO
+        $options    = $this->getOption('options');
+        $exec       = 'phpunit ';
+
+        if(isset($options[0]->path)){
+            $exec = $options[0]->path.' ';
+            unset($options[0]->path);
+        }
+
+        // attach the options to the path
+        foreach($options[0] as $opt => $value){
+            $exec.=$opt.'="'.$value.'" ';
+        }
+
+        try {
+            \Usher\Lib\Console\Execute::run($exec);
+        }catch(\Exception $e){
+            throw new \Exception('Error on command: '.$e->getMessage());
+        }
     }
 }
 
