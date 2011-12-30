@@ -39,7 +39,11 @@ class MoveTask extends \Usher\Lib\Task
         $sourcePath = $this->getOption('source');
         $targetPath = $this->getOption('target');
 
-        if ($sourcePath != null && $targetPath != null && is_file($sourcePath)) {
+        if ($sourcePath !== null && $targetPath !== null) {
+            throw new \Exception('Source or target not found in move task');
+        }
+
+        if (is_file($sourcePath)) {
             $command = 'mv '.$sourcePath.' '.$targetPath;
             \Usher\Lib\Console\Execute::run($command);
         } elseif (!is_file($sourcePath)) {

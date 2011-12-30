@@ -34,6 +34,10 @@ class PhpunitTask extends \Usher\Lib\Task
         $options    = $this->getOption('options');
         $exec       = 'phpunit ';
 
+        if ($options == null) {
+            throw new \Exception('Options not found in PHPUnit task');
+        }
+
         if(isset($options[0]->path)){
             $exec = $options[0]->path.' ';
             unset($options[0]->path);

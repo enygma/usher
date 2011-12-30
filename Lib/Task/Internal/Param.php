@@ -35,6 +35,10 @@ class ParamTask extends \Usher\Lib\Task
         $value = $this->getOption('value');
         $name  = $this->getOption('name');
 
+        if ($name == null || $value == null) {
+            throw new \Exception('Name/value not found in parameter definition');
+        }
+
         \Usher\Lib\Utility\SessionManage::set($name, $value);
     }
 }

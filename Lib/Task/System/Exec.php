@@ -33,6 +33,9 @@ class ExecTask extends \Usher\Lib\Task
     public function execute()
     {
         $command = $this->getOption('command');
+        if ($command == null) {
+            throw new \Exception('"Command" not found in exec task');
+        }
         try {
             \Usher\Lib\Console\Execute::run($command);
         }catch(\Exception $e){

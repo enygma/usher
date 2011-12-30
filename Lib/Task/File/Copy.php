@@ -38,7 +38,11 @@ class CopyTask extends \Usher\Lib\Task
         $sourcePath = $this->getOption('source');
         $targetPath = $this->getOption('target');
 
-        if ($sourcePath != null && $targetPath != null && is_file($sourcePath)) {
+        if ($sourcePath !== null && $targetPath !== null) {
+            throw new \Exception('Source or target value not found in copy task');
+        }
+
+        if (is_file($sourcePath)) {
             copy($sourcePath, $targetPath);
         } elseif (!is_file($sourcePath)) {
             throw new \Exception('Source file "'.$sourcePath.'" not found');

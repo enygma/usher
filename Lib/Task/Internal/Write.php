@@ -32,6 +32,11 @@ class WriteTask extends \Usher\Lib\Task
     {
         //echo out the string given in the parameter
         $message = $this->getOption('message');
+
+        if ($message == null) {
+            throw new \Exception('Message not found in write task');
+        }
+
         \Usher\Lib\Console\Output::msg($message);       
     }
 }
