@@ -78,11 +78,12 @@ abstract class Task
             if (gettype($this->configuration->$optionName) == 'string' 
                 && stristr($this->configuration->$optionName, 'param:') != false
             ) {
-                    $optionName = str_replace(
-                        'param:', '', 
-                        $this->configuration->$optionName
-                    );
-                    return \Usher\Lib\Utility\SessionManage::get($optionName);
+                    // find the "param:"
+                    preg_match('/param:(.*) /',$this->configuration->$optionName,$match);
+
+                    if (isset($match[1])) {
+                        return \Usher\Lib\Utility\SessionManage::get($match[1]);
+                    }
             } else {
                 return $this->configuration->$optionName;
             }
