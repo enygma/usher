@@ -95,11 +95,14 @@ class Console
                     }
                 } catch(\RuntimeException $re) {
                     \Usher\Lib\Console\Output::msg($re->getMessage());
-                    if ($stopExecution == false) {
+                    /*if ($stopExecution == false) {
                         die();
-                    }
+                    }*/
+                    die();
                 }
             } catch(\Exception $e) {
+                echo $e->getMessage();
+
                 // can't find the argument class
                 \Usher\Lib\Console\Output::msg(
                     'Option "'.$argument[0].'" not found.'
