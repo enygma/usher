@@ -38,13 +38,13 @@ class PhpunitTask extends \Usher\Lib\Task
             throw new \Exception('Options not found in PHPUnit task');
         }
 
-        if(isset($options[0]->path)){
+        if (isset($options[0]->path)) {
             $exec = $options[0]->path.' ';
             unset($options[0]->path);
         }
 
         // attach the options to the path
-        foreach($options[0] as $opt => $value){
+        foreach ($options[0] as $opt => $value) {
             $exec.=$opt.'="'.$value.'" ';
         }
 

@@ -79,11 +79,13 @@ abstract class Task
                 && stristr($this->configuration->$optionName, 'param:') != false
             ) {
                     // find the "param:"
-                    preg_match('/param:(.*) /',$this->configuration->$optionName,$match);
+                    preg_match(
+                        '/param:(.*) /', $this->configuration->$optionName, $match
+                    );
 
-                    if (isset($match[1])) {
-                        return \Usher\Lib\Utility\SessionManage::get($match[1]);
-                    }
+                if (isset($match[1])) {
+                    return \Usher\Lib\Utility\SessionManage::get($match[1]);
+                }
             } else {
                 return $this->configuration->$optionName;
             }
