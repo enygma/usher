@@ -44,15 +44,17 @@ class Buildcomposer extends \Usher\Lib\Console\Option
         $project        = \Usher\Lib\Config::getOption('project');
         $task           = new \Usher\Lib\Task\Internal\BaseTask($project);
         $config         = $task->getProjectOption('composerConfig');
+
+        if ($config === null) {
+            throw new \RuntimeException('Composer configuration not found in config.json');
+        }
+
+        $config->name   = $task->getProjectOption('name');
         $currentDir     = getcwd();
         $configString   = \Usher\Lib\Utility\JsonHandler::output(json_encode($config));
 
         // find our project path and see if we have a composer.json already
         $projectBase  = $task->getProjectOption('projectBase');
-
-        if ($config === null) {
-            throw new \RuntimeException('Composer configuration not found in config.json');
-        }
 
         if (is_dir($projectBase)) {
             //let's make ourselves a config file!
