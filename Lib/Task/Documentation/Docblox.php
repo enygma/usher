@@ -1,6 +1,6 @@
 <?php
  /**
- * Run the PHPDocumentor command to build the documentation
+ * Run the DocBlox command to build the documentation
  * 
  * PHP Version 5
  *
