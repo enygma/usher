@@ -108,6 +108,23 @@ abstract class Task
     }
 
     /**
+     * Append command line options to the command string
+     *
+     * @param string $command Command to execute
+     * @param array  $options Options to append to command
+     *
+     * @return string $command Newly formatted command
+     */
+    public function appendOptions($command,$options)
+    {
+        // attach the options to the path
+        foreach ($options as $opt => $value) {
+            $command.= $opt.'="'.$value.'" ';
+        }
+        return $command;
+    }
+
+    /**
      * Abstract definiton of main execution method
      *
      * @return void
