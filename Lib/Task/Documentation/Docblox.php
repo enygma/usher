@@ -38,7 +38,7 @@ class DocbloxTask extends \Lib\Task
             throw new \Exception('Options not found in DocBlox task');
         }
 
-        $command = $this->appendOptions($exec,$options[0]);
+        $command = $this->appendOptions($exec, $options[0]);
 
         try {
             \Usher\Lib\Console\Execute::run($exec);
