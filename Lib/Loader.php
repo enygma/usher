@@ -23,13 +23,18 @@ namespace Usher\Lib;
  */
 class Loader
 {
+    private static $_baseIncludePath = null;
+
     /**
      * Initialize the loader, set up the autoloader
      *
      * @return void
      */
-    public static function init()
+    public static function init($baseIncludePath=null)
     {
+        self::$_baseIncludePath = ($baseIncludePath == null) 
+            ? str_replace('/Lib', '', __DIR__) : $baseIncludePath;
+
         self::registerAutoload(array('Usher\Lib\Loader', 'autoload'));
         self::registerAutoload(array('Usher\Lib\Loader', 'autoloadFail'), false);
     }
@@ -75,8 +80,12 @@ class Loader
         }
 
         foreach ($classPaths as $classPath) {
-            if (is_file($classPath)) {
-                include_once $classPath;
+            echo 'finding: '.self::$_baseIncludePath.'/'.$classPath."\n\n";
+
+            if (is_file(self::$_baseIncludePath.'/'.$classPath)) {
+                echo 'class found: '.realpath(self::$_baseIncludePath.'/'.$classPath)."\n";
+
+                include_once realpath(self::$_baseIncludePath.'/'.$classPath);
             }
         }
     }
