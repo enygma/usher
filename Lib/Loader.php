@@ -80,11 +80,7 @@ class Loader
         }
 
         foreach ($classPaths as $classPath) {
-            echo 'finding: '.self::$_baseIncludePath.'/'.$classPath."\n\n";
-
             if (is_file(self::$_baseIncludePath.'/'.$classPath)) {
-                echo 'class found: '.realpath(self::$_baseIncludePath.'/'.$classPath)."\n";
-
                 include_once realpath(self::$_baseIncludePath.'/'.$classPath);
             }
         }
