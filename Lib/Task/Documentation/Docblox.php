@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Lib\Task\Test;
+namespace Lib\Task\Documentation;
 
 /**
  * Class DocbloxTask
