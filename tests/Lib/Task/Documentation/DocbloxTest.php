@@ -13,7 +13,7 @@ class DocbloxTest extends \PHPUnit_Framework_TestCase
     }
     public function tearDown()
     {
-        
+        unset($this->_task);
     }
 
     /**

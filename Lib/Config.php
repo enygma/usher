@@ -48,10 +48,10 @@ class Config
      * @throws Exception
      * @return void
      */
-    public static function load()
+    public static function load($configPath=null)
     {
         // look for a configuration file
-        $configFilePath = self::$_configFile;
+        $configFilePath = (($configPath !== null) ? $configPath : '').self::$_configFile;
 
         // see if we have a config file option on the command line
         $path = \Usher\Lib\Console::getOption('configFilePath');
@@ -107,6 +107,18 @@ class Config
     {
         $ex = new Utility\ExpandObject();
         return $ex->find(self::$_currentConfig, $optionPath, '.');
+    }
+
+    /**
+     * Set the path to the configuration file
+     *
+     * @param string $configPath Path to directory containing configuration file
+     *
+     * @return void
+     */
+    public function setConfigFilePath($configPath)
+    {
+        $this->_configFile = $configPath.'/'.$this->_configFile;
     }
 }
 

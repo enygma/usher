@@ -13,17 +13,25 @@ class ParamTest extends \PHPUnit_Framework_TestCase
     }
     public function tearDown()
     {
-        
+        unset($this->_task);
     }
 
     /**
-     * Options not found in task project data
+     * Options not found/loaded in task project data
      *
      * @expectedException Exception
      */
-    public function testOptionsNotFound()
+    public function testOptionsNotLoaded()
     {
         $this->_task->execute();
+    }
+
+    /**
+     * Options are not found in task project data
+     */
+    public function testOptionsNotFound()
+    {
+        \Usher\Lib\Config::load(APPLICATION_PATH.'/');
     }
 }
 
