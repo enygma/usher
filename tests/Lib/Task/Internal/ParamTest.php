@@ -1,15 +1,15 @@
 <?php
 
-namespace Lib\Task\Documentation;
+namespace Lib\Task\Internal;
 
-class DocbloxTest extends \PHPUnit_Framework_TestCase
+class ParamTest extends \PHPUnit_Framework_TestCase
 {
     private $_task = null;
 
     public function setUp()
     {
         $project = array();
-        $this->_task = new DocbloxTask($project);
+        $this->_task = new ParamTask($project);
     }
     public function tearDown()
     {
