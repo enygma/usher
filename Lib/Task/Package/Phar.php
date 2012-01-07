@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\Package;
+namespace Lib\Task\Package;
 
 /**
  * Class PharTask

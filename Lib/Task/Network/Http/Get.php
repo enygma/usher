@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\Network\Http;
+namespace Lib\Task\Network\Http;
 
 /**
  * Class GetTask

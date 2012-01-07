@@ -10,7 +10,7 @@
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  */
-namespace Usher\Lib\Task\File;
+namespace Lib\Task\File;
 
 /**
  * Class CopyTask

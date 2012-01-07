@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\Test;
+namespace Lib\Task\Test;
 
 /**
  * Class PHPUnitTask

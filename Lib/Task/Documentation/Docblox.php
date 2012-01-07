@@ -22,7 +22,7 @@ namespace Lib\Task\Documentation;
  * @license  http://www.opensource.org/licenses/mit-license.php MIT
  * @link     http://github.com/enygma/usher
  */
-class DocbloxTask extends \Lib\Task
+class DocbloxTask extends \Usher\Lib\Task
 {
     /**
      * Execute the task

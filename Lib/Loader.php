@@ -81,6 +81,8 @@ class Loader
 
         foreach ($classPaths as $classPath) {
             if (is_file(self::$_baseIncludePath.'/'.$classPath)) {
+                echo "included: ".self::$_baseIncludePath.'/'.$classPath."\n\n";
+
                 include_once realpath(self::$_baseIncludePath.'/'.$classPath);
             }
         }

@@ -81,7 +81,8 @@ class Application
             }
             $typePath = substr($typePath, 0, strlen($typePath)-1);
             
-            $taskName       = '\Usher\\Lib\\Task\\'.$typePath;
+            //$taskName       = '\Usher\\Lib\\Task\\'.$typePath;
+            $taskName       = '\\Lib\\Task\\'.$typePath;
             $className      = $taskName.'Task';
             $taskObject     = new $className($project);
             $task->id = $index;

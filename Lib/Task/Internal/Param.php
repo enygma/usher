@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\Internal;
+namespace Lib\Task\Internal;
 
 /**
  * Class ParamTask

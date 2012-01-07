@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\Vcs\Svn;
+namespace Lib\Task\Vcs\Svn;
 
  /**
  * Class CloneTask

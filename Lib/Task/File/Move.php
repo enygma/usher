@@ -11,7 +11,7 @@
  * @link     http://github.com/enygma/usher
  */
 
-namespace Usher\Lib\Task\File;
+namespace Lib\Task\File;
 
 /**
  * Class MoveTask
